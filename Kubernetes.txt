@@ -1,0 +1,26 @@
+Deployment:
+kubectl create deployment first-app --image=andriklas/kub-first-app
+
+Service:
+kubectl expose deployment first-app --type=LoadBalancer --port=8080
+
+kubectl set image deployment/first-app kub-first-app=andriklas/kub-first-app:2
+
+kubectl rollout status deployment/first-app
+
+kubectl rollout undo deployment/first-app
+
+kubectl rollout history deployment/first-app
+
+kubectl delete service first-app
+
+kubectl delete deployment first-app
+
+
+---------------------------------------------------
+
+kubectl apply -f deployment.yaml   -f ehk filename
+
+kubectl apply -f service.yaml
+
+kubectl delete -f deployment.yaml, -f service.yaml (kustutab deploymenti ja service, mitte yaml failid)
